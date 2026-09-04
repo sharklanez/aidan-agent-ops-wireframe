@@ -1,0 +1,2498 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>aidan-agent-ops-wireframe.html</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" scrolling="no" referrerpolicy="no-referrer" title="aidan-agent-ops-wireframe.html" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'&quot;&gt;
+&lt;title&gt;aidan-agent-ops-wireframe.html&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const parentWindow = globalThis.parent;
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data?.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress {
+  display: flex;
+  height: 6px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 6px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;script&gt;
+(() =&gt; {
+  const root = document.documentElement;
+  const initialGlobals =
+    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
+  delete globalThis.__codexVisualizationInitialGlobals;
+  let appliedProperties = [];
+
+  const applyHostStyleVariables = (styleVariables) =&gt; {
+    if (styleVariables == null || typeof styleVariables !== &quot;object&quot;) {
+      return;
+    }
+    for (const property of appliedProperties) {
+      root.style.removeProperty(property);
+    }
+    appliedProperties = [];
+    for (const [property, value] of Object.entries(styleVariables)) {
+      if (property.startsWith(&quot;--&quot;) &amp;&amp; typeof value === &quot;string&quot;) {
+        root.style.setProperty(property, value);
+        appliedProperties.push(property);
+      }
+    }
+  };
+
+  const syncHostStyles = (globals) =&gt; {
+    applyHostStyleVariables(globals?.visualizationStyleVariables);
+    const sandboxDocument = globalThis.frameElement?.ownerDocument;
+    if (sandboxDocument != null &amp;&amp; globals?.visualizationTheme != null) {
+      let colorSchemeMeta = sandboxDocument.querySelector(
+        'meta[name=&quot;color-scheme&quot;]',
+      );
+      if (colorSchemeMeta == null) {
+        colorSchemeMeta = sandboxDocument.createElement(&quot;meta&quot;);
+        colorSchemeMeta.name = &quot;color-scheme&quot;;
+        sandboxDocument.head.appendChild(colorSchemeMeta);
+      }
+      colorSchemeMeta.content = globals.visualizationTheme;
+      sandboxDocument.documentElement.style.colorScheme =
+        globals.visualizationTheme;
+      // Paint the host surface behind transparent saved visualization documents.
+      sandboxDocument.documentElement.style.backgroundColor =
+        root.style.getPropertyValue(&quot;--background&quot;);
+    }
+  };
+
+  syncHostStyles(initialGlobals);
+  globalThis.addEventListener(&quot;openai:set_globals&quot;, (event) =&gt; {
+    syncHostStyles(event.detail?.globals);
+  });
+})();
+&lt;/script&gt;
+
+&lt;div id=&quot;aidan-orchestrator-wireframe&quot;&gt;
+  &lt;style&gt;
+    #aidan-orchestrator-wireframe {
+      color-scheme: light dark;
+      --aidan-canvas: light-dark(#ececea, #101211);
+      --aidan-surface: light-dark(#ffffff, #1a1d1b);
+      --aidan-surface-2: light-dark(#f5f5f2, #222622);
+      --aidan-surface-3: light-dark(#e9eae6, #2b302c);
+      --aidan-ink: light-dark(#20231f, #edf1ec);
+      --aidan-subtle: light-dark(#666b64, #aab2aa);
+      --aidan-line: light-dark(#cfd2cc, #3a403b);
+      --aidan-strong-line: light-dark(#aeb3ab, #596159);
+      --aidan-accent: light-dark(#1e5b44, #9ecfb5);
+      --aidan-accent-soft: light-dark(#e3eee8, #233b30);
+      --aidan-good: light-dark(#2c684c, #9bd0ae);
+      --aidan-good-soft: light-dark(#e6f0e9, #203a2b);
+      --aidan-warn: light-dark(#8a5b12, #e3be77);
+      --aidan-warn-soft: light-dark(#f5ecd9, #3c3020);
+      --aidan-bad: light-dark(#8d3c38, #e0a19b);
+      --aidan-bad-soft: light-dark(#f5e5e3, #432826);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
+      color: var(--aidan-ink);
+      width: 100%;
+      background: transparent;
+    }
+
+    #aidan-orchestrator-wireframe * { box-sizing: border-box; }
+    #aidan-orchestrator-wireframe button,
+    #aidan-orchestrator-wireframe input,
+    #aidan-orchestrator-wireframe select,
+    #aidan-orchestrator-wireframe textarea { font: inherit; color: inherit; }
+    #aidan-orchestrator-wireframe button { cursor: pointer; }
+    #aidan-orchestrator-wireframe [hidden] { display: none !important; }
+
+    #aidan-orchestrator-wireframe .aw-window {
+      position: relative;
+      width: 100%;
+      min-height: 720px;
+      overflow: hidden;
+      border: 1px solid var(--aidan-strong-line);
+      border-radius: 12px;
+      background: var(--aidan-surface);
+      box-shadow: 0 16px 36px light-dark(rgba(25, 29, 25, .12), rgba(0, 0, 0, .3));
+    }
+
+    #aidan-orchestrator-wireframe .aw-topbar {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--aidan-line);
+      background: var(--aidan-surface);
+    }
+
+    #aidan-orchestrator-wireframe .aw-brand,
+    #aidan-orchestrator-wireframe .aw-top-actions,
+    #aidan-orchestrator-wireframe .aw-row,
+    #aidan-orchestrator-wireframe .aw-inline,
+    #aidan-orchestrator-wireframe .aw-title-row,
+    #aidan-orchestrator-wireframe .aw-approval-actions,
+    #aidan-orchestrator-wireframe .aw-builder-actions,
+    #aidan-orchestrator-wireframe .aw-list-item,
+    #aidan-orchestrator-wireframe .aw-connection,
+    #aidan-orchestrator-wireframe .aw-policy-head {
+      display: flex;
+      align-items: center;
+    }
+
+    #aidan-orchestrator-wireframe .aw-brand { gap: 10px; min-width: 170px; }
+    #aidan-orchestrator-wireframe .aw-brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--aidan-ink);
+      background: var(--aidan-ink);
+      color: var(--aidan-surface);
+      font-weight: 500;
+      border-radius: 6px;
+    }
+    #aidan-orchestrator-wireframe .aw-brand-name { font-weight: 500; letter-spacing: .08em; }
+    #aidan-orchestrator-wireframe .aw-brand-sub { color: var(--aidan-subtle); font-size: 12px; }
+    #aidan-orchestrator-wireframe .aw-top-actions { justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+
+    #aidan-orchestrator-wireframe .aw-role-select,
+    #aidan-orchestrator-wireframe .aw-field,
+    #aidan-orchestrator-wireframe .aw-textarea {
+      border: 1px solid var(--aidan-strong-line);
+      background: var(--aidan-surface);
+      border-radius: 6px;
+      padding: 9px 10px;
+    }
+    #aidan-orchestrator-wireframe .aw-role-select { min-width: 170px; }
+    #aidan-orchestrator-wireframe .aw-textarea { width: 100%; min-height: 108px; resize: vertical; }
+
+    #aidan-orchestrator-wireframe .aw-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--aidan-strong-line);
+      border-radius: 6px;
+      background: var(--aidan-surface);
+      color: var(--aidan-ink);
+      font-weight: 500;
+    }
+    #aidan-orchestrator-wireframe .aw-button:hover { background: var(--aidan-surface-2); }
+    #aidan-orchestrator-wireframe .aw-button-primary {
+      background: var(--aidan-ink);
+      color: var(--aidan-surface);
+      border-color: var(--aidan-ink);
+    }
+    #aidan-orchestrator-wireframe .aw-button-primary:hover { opacity: .88; background: var(--aidan-ink); }
+    #aidan-orchestrator-wireframe .aw-button-quiet { border-color: transparent; background: transparent; }
+    #aidan-orchestrator-wireframe .aw-button-danger { color: var(--aidan-bad); border-color: var(--aidan-bad); }
+    #aidan-orchestrator-wireframe .aw-button[disabled] { opacity: .55; cursor: default; }
+
+    #aidan-orchestrator-wireframe .aw-app {
+      display: grid;
+      grid-template-columns: 206px minmax(0, 1fr);
+      min-height: 655px;
+    }
+
+    #aidan-orchestrator-wireframe .aw-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 16px 12px;
+      border-right: 1px solid var(--aidan-line);
+      background: var(--aidan-surface-2);
+    }
+    #aidan-orchestrator-wireframe .aw-workspace {
+      padding: 4px 8px 12px;
+      border-bottom: 1px solid var(--aidan-line);
+    }
+    #aidan-orchestrator-wireframe .aw-workspace strong { display: block; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-workspace span { color: var(--aidan-subtle); font-size: 12px; }
+    #aidan-orchestrator-wireframe .aw-nav { display: grid; gap: 3px; }
+    #aidan-orchestrator-wireframe .aw-nav-label {
+      margin: 10px 8px 4px;
+      color: var(--aidan-subtle);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    #aidan-orchestrator-wireframe .aw-nav-button {
+      width: 100%;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 10px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--aidan-subtle);
+      text-align: left;
+    }
+    #aidan-orchestrator-wireframe .aw-nav-button:hover { background: var(--aidan-surface-3); color: var(--aidan-ink); }
+    #aidan-orchestrator-wireframe .aw-nav-button[aria-current=&quot;page&quot;] {
+      background: var(--aidan-surface);
+      color: var(--aidan-ink);
+      box-shadow: inset 3px 0 0 var(--aidan-accent);
+    }
+    #aidan-orchestrator-wireframe .aw-nav-count {
+      margin-left: auto;
+      min-width: 22px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: var(--aidan-warn-soft);
+      color: var(--aidan-warn);
+      text-align: center;
+      font-size: 11px;
+    }
+    #aidan-orchestrator-wireframe .aw-side-foot {
+      margin-top: auto;
+      padding: 12px 8px 0;
+      border-top: 1px solid var(--aidan-line);
+      color: var(--aidan-subtle);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    #aidan-orchestrator-wireframe .aw-main {
+      min-width: 0;
+      padding: 22px;
+      background: var(--aidan-canvas);
+    }
+    #aidan-orchestrator-wireframe .aw-screen { max-width: 1080px; margin: 0 auto; }
+    #aidan-orchestrator-wireframe .aw-title-row { justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    #aidan-orchestrator-wireframe h1,
+    #aidan-orchestrator-wireframe h2,
+    #aidan-orchestrator-wireframe h3,
+    #aidan-orchestrator-wireframe p { margin: 0; }
+    #aidan-orchestrator-wireframe h1 { font-size: 24px; line-height: 1.2; font-weight: 500; }
+    #aidan-orchestrator-wireframe h2 { font-size: 17px; line-height: 1.3; font-weight: 500; }
+    #aidan-orchestrator-wireframe h3 { font-size: 14px; line-height: 1.3; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-subtitle { margin-top: 5px; color: var(--aidan-subtle); font-size: 13px; }
+    #aidan-orchestrator-wireframe .aw-muted { color: var(--aidan-subtle); }
+    #aidan-orchestrator-wireframe .aw-small { font-size: 12px; }
+
+    #aidan-orchestrator-wireframe .aw-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    #aidan-orchestrator-wireframe .aw-metric,
+    #aidan-orchestrator-wireframe .aw-panel,
+    #aidan-orchestrator-wireframe .aw-agent-card,
+    #aidan-orchestrator-wireframe .aw-approval-card,
+    #aidan-orchestrator-wireframe .aw-template,
+    #aidan-orchestrator-wireframe .aw-request-card {
+      border: 1px solid var(--aidan-line);
+      background: var(--aidan-surface);
+      border-radius: 8px;
+    }
+    #aidan-orchestrator-wireframe .aw-metric { min-height: 100px; padding: 14px; }
+    #aidan-orchestrator-wireframe .aw-metric-label { color: var(--aidan-subtle); font-size: 12px; }
+    #aidan-orchestrator-wireframe .aw-metric-value { margin-top: 8px; font-size: 25px; font-weight: 500; letter-spacing: -.02em; }
+    #aidan-orchestrator-wireframe .aw-metric-note { margin-top: 5px; color: var(--aidan-subtle); font-size: 11px; }
+
+    #aidan-orchestrator-wireframe .aw-grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+      gap: 12px;
+    }
+    #aidan-orchestrator-wireframe .aw-grid-even {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    #aidan-orchestrator-wireframe .aw-panel { padding: 16px; }
+    #aidan-orchestrator-wireframe .aw-panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    #aidan-orchestrator-wireframe .aw-panel-head p { margin-top: 3px; }
+
+    #aidan-orchestrator-wireframe .aw-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: max-content;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: var(--aidan-surface-3);
+      color: var(--aidan-subtle);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    #aidan-orchestrator-wireframe .aw-badge-good { color: var(--aidan-good); background: var(--aidan-good-soft); }
+    #aidan-orchestrator-wireframe .aw-badge-warn { color: var(--aidan-warn); background: var(--aidan-warn-soft); }
+    #aidan-orchestrator-wireframe .aw-badge-bad { color: var(--aidan-bad); background: var(--aidan-bad-soft); }
+    #aidan-orchestrator-wireframe .aw-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+    #aidan-orchestrator-wireframe .aw-work-list,
+    #aidan-orchestrator-wireframe .aw-stack,
+    #aidan-orchestrator-wireframe .aw-activity-list,
+    #aidan-orchestrator-wireframe .aw-policy-list { display: grid; gap: 9px; }
+    #aidan-orchestrator-wireframe .aw-list-item {
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 56px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--aidan-line);
+    }
+    #aidan-orchestrator-wireframe .aw-list-item:last-child { border-bottom: 0; }
+    #aidan-orchestrator-wireframe .aw-list-main { min-width: 0; }
+    #aidan-orchestrator-wireframe .aw-list-main strong { display: block; font-size: 13px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-list-main span { display: block; margin-top: 3px; color: var(--aidan-subtle); font-size: 11px; }
+    #aidan-orchestrator-wireframe .aw-progress-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--aidan-surface-3);
+    }
+    #aidan-orchestrator-wireframe .aw-progress-bar { height: 100%; background: var(--aidan-accent); border-radius: inherit; }
+
+    #aidan-orchestrator-wireframe .aw-table-wrap { width: 100%; overflow-x: auto; }
+    #aidan-orchestrator-wireframe table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    #aidan-orchestrator-wireframe th,
+    #aidan-orchestrator-wireframe td { padding: 11px 10px; border-bottom: 1px solid var(--aidan-line); text-align: left; vertical-align: middle; }
+    #aidan-orchestrator-wireframe th { color: var(--aidan-subtle); font-weight: 500; white-space: nowrap; }
+    #aidan-orchestrator-wireframe td:last-child,
+    #aidan-orchestrator-wireframe th:last-child { text-align: right; }
+    #aidan-orchestrator-wireframe tbody tr:last-child td { border-bottom: 0; }
+
+    #aidan-orchestrator-wireframe .aw-agent-grid,
+    #aidan-orchestrator-wireframe .aw-template-grid,
+    #aidan-orchestrator-wireframe .aw-connection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    #aidan-orchestrator-wireframe .aw-agent-card,
+    #aidan-orchestrator-wireframe .aw-template,
+    #aidan-orchestrator-wireframe .aw-request-card { padding: 14px; }
+    #aidan-orchestrator-wireframe .aw-agent-card .aw-row { justify-content: space-between; gap: 10px; }
+    #aidan-orchestrator-wireframe .aw-agent-icon,
+    #aidan-orchestrator-wireframe .aw-step-icon,
+    #aidan-orchestrator-wireframe .aw-connection-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--aidan-line);
+      border-radius: 6px;
+      background: var(--aidan-surface-2);
+    }
+    #aidan-orchestrator-wireframe .aw-agent-card h3 { margin-top: 11px; }
+    #aidan-orchestrator-wireframe .aw-agent-card p { margin-top: 5px; color: var(--aidan-subtle); font-size: 12px; line-height: 1.45; }
+    #aidan-orchestrator-wireframe .aw-agent-meta { margin-top: 13px; padding-top: 11px; border-top: 1px solid var(--aidan-line); font-size: 11px; color: var(--aidan-subtle); }
+
+    #aidan-orchestrator-wireframe .aw-flow-canvas {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(110px, 1fr));
+      gap: 18px;
+      align-items: stretch;
+      padding: 20px 4px 8px;
+    }
+    #aidan-orchestrator-wireframe .aw-flow-step {
+      position: relative;
+      min-height: 126px;
+      padding: 12px;
+      border: 1px solid var(--aidan-strong-line);
+      border-radius: 6px;
+      background: var(--aidan-surface);
+    }
+    #aidan-orchestrator-wireframe .aw-flow-step:not(:last-child)::after {
+      content: &quot;&quot;;
+      position: absolute;
+      top: 50%;
+      right: -15px;
+      width: 11px;
+      height: 1px;
+      background: var(--aidan-strong-line);
+    }
+    #aidan-orchestrator-wireframe .aw-flow-step strong { display: block; margin-top: 10px; font-size: 12px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-flow-step span { display: block; margin-top: 4px; color: var(--aidan-subtle); font-size: 11px; line-height: 1.35; }
+    #aidan-orchestrator-wireframe .aw-flow-step.aw-gate { border-style: dashed; background: var(--aidan-warn-soft); }
+    #aidan-orchestrator-wireframe .aw-builder-actions { justify-content: space-between; gap: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--aidan-line); }
+
+    #aidan-orchestrator-wireframe .aw-approval-layout {
+      display: grid;
+      grid-template-columns: minmax(240px, .7fr) minmax(0, 1.3fr);
+      gap: 12px;
+    }
+    #aidan-orchestrator-wireframe .aw-approval-card { padding: 12px; }
+    #aidan-orchestrator-wireframe .aw-approval-card[aria-selected=&quot;true&quot;] { border-color: var(--aidan-accent); box-shadow: inset 3px 0 0 var(--aidan-accent); }
+    #aidan-orchestrator-wireframe .aw-approval-card button { width: 100%; border: 0; background: transparent; padding: 0; text-align: left; }
+    #aidan-orchestrator-wireframe .aw-approval-detail { min-height: 420px; }
+    #aidan-orchestrator-wireframe .aw-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+    #aidan-orchestrator-wireframe .aw-detail-cell { padding: 11px; background: var(--aidan-surface-2); border-radius: 6px; }
+    #aidan-orchestrator-wireframe .aw-detail-cell span { display: block; color: var(--aidan-subtle); font-size: 11px; }
+    #aidan-orchestrator-wireframe .aw-detail-cell strong { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-evidence { padding: 12px; border-left: 3px solid var(--aidan-accent); background: var(--aidan-accent-soft); font-size: 12px; line-height: 1.5; }
+    #aidan-orchestrator-wireframe .aw-approval-actions { justify-content: flex-end; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+    #aidan-orchestrator-wireframe .aw-timeline { position: relative; display: grid; gap: 0; }
+    #aidan-orchestrator-wireframe .aw-event { display: grid; grid-template-columns: 78px 20px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 12px 0; }
+    #aidan-orchestrator-wireframe .aw-event + .aw-event { border-top: 1px solid var(--aidan-line); }
+    #aidan-orchestrator-wireframe .aw-event-time { color: var(--aidan-subtle); font-size: 11px; }
+    #aidan-orchestrator-wireframe .aw-event-mark { width: 10px; height: 10px; margin-top: 3px; border-radius: 50%; background: var(--aidan-accent); }
+    #aidan-orchestrator-wireframe .aw-event-main strong { display: block; font-size: 12px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-event-main span { display: block; margin-top: 4px; color: var(--aidan-subtle); font-size: 11px; line-height: 1.4; }
+
+    #aidan-orchestrator-wireframe .aw-connection {
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--aidan-line);
+      border-radius: 8px;
+      background: var(--aidan-surface);
+    }
+    #aidan-orchestrator-wireframe .aw-connection-main { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    #aidan-orchestrator-wireframe .aw-connection-main strong { display: block; font-size: 13px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-connection-main span { display: block; margin-top: 3px; color: var(--aidan-subtle); font-size: 11px; }
+
+    #aidan-orchestrator-wireframe .aw-policy {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--aidan-line);
+    }
+    #aidan-orchestrator-wireframe .aw-policy:last-child { border-bottom: 0; }
+    #aidan-orchestrator-wireframe .aw-policy-head { justify-content: space-between; gap: 14px; }
+    #aidan-orchestrator-wireframe .aw-policy-copy strong { display: block; font-size: 13px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-policy-copy span { display: block; margin-top: 4px; color: var(--aidan-subtle); font-size: 11px; }
+    #aidan-orchestrator-wireframe .aw-toggle { width: 42px; height: 24px; accent-color: var(--aidan-accent); }
+    #aidan-orchestrator-wireframe .aw-matrix th,
+    #aidan-orchestrator-wireframe .aw-matrix td { text-align: center; }
+    #aidan-orchestrator-wireframe .aw-matrix th:first-child,
+    #aidan-orchestrator-wireframe .aw-matrix td:first-child { text-align: left; }
+
+    #aidan-orchestrator-wireframe .aw-bars { display: grid; gap: 13px; margin-top: 14px; }
+    #aidan-orchestrator-wireframe .aw-bar-row { display: grid; grid-template-columns: 130px minmax(90px, 1fr) 70px; gap: 10px; align-items: center; font-size: 12px; }
+    #aidan-orchestrator-wireframe .aw-bar-value { text-align: right; font-variant-numeric: tabular-nums; }
+
+    #aidan-orchestrator-wireframe .aw-request-card { display: grid; gap: 12px; }
+    #aidan-orchestrator-wireframe .aw-field-group { display: grid; gap: 6px; }
+    #aidan-orchestrator-wireframe .aw-field-group label { color: var(--aidan-subtle); font-size: 12px; }
+    #aidan-orchestrator-wireframe .aw-quick-prompts { display: flex; gap: 7px; flex-wrap: wrap; }
+
+    #aidan-orchestrator-wireframe .aw-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: start center;
+      padding: 74px 18px 24px;
+      background: light-dark(rgba(32, 35, 31, .48), rgba(0, 0, 0, .68));
+    }
+    #aidan-orchestrator-wireframe .aw-modal {
+      width: min(720px, 100%);
+      border: 1px solid var(--aidan-strong-line);
+      border-radius: 10px;
+      background: var(--aidan-surface);
+      box-shadow: 0 22px 48px light-dark(rgba(0, 0, 0, .22), rgba(0, 0, 0, .52));
+    }
+    #aidan-orchestrator-wireframe .aw-modal-head,
+    #aidan-orchestrator-wireframe .aw-modal-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 18px; }
+    #aidan-orchestrator-wireframe .aw-modal-head { border-bottom: 1px solid var(--aidan-line); }
+    #aidan-orchestrator-wireframe .aw-modal-foot { border-top: 1px solid var(--aidan-line); }
+    #aidan-orchestrator-wireframe .aw-modal-body { padding: 18px; }
+    #aidan-orchestrator-wireframe .aw-stepper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px; }
+    #aidan-orchestrator-wireframe .aw-stepper-item { display: grid; gap: 6px; color: var(--aidan-subtle); font-size: 11px; }
+    #aidan-orchestrator-wireframe .aw-stepper-line { height: 4px; border-radius: 999px; background: var(--aidan-surface-3); }
+    #aidan-orchestrator-wireframe .aw-stepper-item.is-active { color: var(--aidan-ink); }
+    #aidan-orchestrator-wireframe .aw-stepper-item.is-active .aw-stepper-line,
+    #aidan-orchestrator-wireframe .aw-stepper-item.is-done .aw-stepper-line { background: var(--aidan-accent); }
+    #aidan-orchestrator-wireframe .aw-template { width: 100%; text-align: left; color: inherit; }
+    #aidan-orchestrator-wireframe .aw-template.is-selected { border-color: var(--aidan-accent); box-shadow: inset 0 0 0 2px var(--aidan-accent-soft); }
+    #aidan-orchestrator-wireframe .aw-template strong { display: block; font-size: 13px; font-weight: 500; }
+    #aidan-orchestrator-wireframe .aw-template span { display: block; margin-top: 4px; color: var(--aidan-subtle); font-size: 11px; line-height: 1.4; }
+    #aidan-orchestrator-wireframe .aw-check-list { display: grid; gap: 10px; margin-top: 14px; }
+    #aidan-orchestrator-wireframe .aw-check-row { display: flex; align-items: flex-start; gap: 9px; padding: 10px; background: var(--aidan-surface-2); border-radius: 6px; font-size: 12px; }
+
+    #aidan-orchestrator-wireframe .aw-toast {
+      position: absolute;
+      z-index: 30;
+      right: 18px;
+      bottom: 18px;
+      max-width: 320px;
+      padding: 12px 14px;
+      border: 1px solid var(--aidan-strong-line);
+      border-radius: 7px;
+      background: var(--aidan-ink);
+      color: var(--aidan-surface);
+      box-shadow: 0 10px 24px light-dark(rgba(0, 0, 0, .2), rgba(0, 0, 0, .48));
+      font-size: 12px;
+    }
+
+    @media (max-width: 880px) {
+      #aidan-orchestrator-wireframe .aw-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #aidan-orchestrator-wireframe .aw-flow-canvas { grid-template-columns: 1fr; gap: 10px; }
+      #aidan-orchestrator-wireframe .aw-flow-step { min-height: 0; }
+      #aidan-orchestrator-wireframe .aw-flow-step:not(:last-child)::after { top: auto; bottom: -7px; right: 50%; width: 1px; height: 4px; }
+    }
+    @media (max-width: 780px) {
+      #aidan-orchestrator-wireframe .aw-app { grid-template-columns: 1fr; }
+      #aidan-orchestrator-wireframe .aw-sidebar { border-right: 0; border-bottom: 1px solid var(--aidan-line); gap: 8px; }
+      #aidan-orchestrator-wireframe .aw-workspace,
+      #aidan-orchestrator-wireframe .aw-side-foot,
+      #aidan-orchestrator-wireframe .aw-nav-label { display: none; }
+      #aidan-orchestrator-wireframe .aw-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      #aidan-orchestrator-wireframe .aw-main { padding: 16px 12px; }
+      #aidan-orchestrator-wireframe .aw-grid-2,
+      #aidan-orchestrator-wireframe .aw-grid-even,
+      #aidan-orchestrator-wireframe .aw-approval-layout { grid-template-columns: 1fr; }
+      #aidan-orchestrator-wireframe .aw-title-row { align-items: flex-start; flex-direction: column; }
+      #aidan-orchestrator-wireframe .aw-event { grid-template-columns: 58px 14px minmax(0, 1fr); }
+      #aidan-orchestrator-wireframe .aw-event &gt; .aw-badge { grid-column: 3; }
+      #aidan-orchestrator-wireframe .aw-modal-backdrop { padding: 18px 8px; }
+      #aidan-orchestrator-wireframe .aw-stepper { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      #aidan-orchestrator-wireframe .aw-topbar { align-items: flex-start; flex-direction: column; }
+      #aidan-orchestrator-wireframe .aw-top-actions { width: 100%; justify-content: space-between; }
+      #aidan-orchestrator-wireframe .aw-role-select { min-width: 0; flex: 1; }
+      #aidan-orchestrator-wireframe .aw-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #aidan-orchestrator-wireframe .aw-agent-grid,
+      #aidan-orchestrator-wireframe .aw-template-grid,
+      #aidan-orchestrator-wireframe .aw-connection-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 390px) {
+      #aidan-orchestrator-wireframe .aw-metrics,
+      #aidan-orchestrator-wireframe .aw-detail-grid { grid-template-columns: 1fr; }
+      #aidan-orchestrator-wireframe .aw-top-actions { align-items: stretch; flex-direction: column; }
+      #aidan-orchestrator-wireframe .aw-role-select { width: 100%; }
+      #aidan-orchestrator-wireframe .aw-nav { grid-template-columns: 1fr 1fr; }
+      #aidan-orchestrator-wireframe .aw-nav-button { padding-inline: 7px; font-size: 12px; }
+      #aidan-orchestrator-wireframe .aw-bar-row { grid-template-columns: 95px minmax(70px, 1fr) 60px; }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;aw-window&quot;&gt;
+    &lt;header class=&quot;aw-topbar&quot;&gt;
+      &lt;div class=&quot;aw-brand&quot;&gt;
+        &lt;div class=&quot;aw-brand-mark&quot; aria-hidden=&quot;true&quot;&gt;A&lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;aw-brand-name&quot;&gt;AIDAN&lt;/div&gt;
+          &lt;div class=&quot;aw-brand-sub&quot;&gt;AI operations control&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;aw-top-actions&quot;&gt;
+        &lt;label class=&quot;aw-small aw-muted&quot; for=&quot;aw-role&quot;&gt;View as&lt;/label&gt;
+        &lt;select class=&quot;aw-role-select&quot; id=&quot;aw-role&quot;&gt;
+          &lt;option value=&quot;admin&quot;&gt;Operations admin / buyer&lt;/option&gt;
+          &lt;option value=&quot;employee&quot;&gt;Employee / approver&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; id=&quot;aw-primary-action&quot;&gt;
+          &lt;i data-lucide=&quot;plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;Deploy workflow&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;div class=&quot;aw-app&quot;&gt;
+      &lt;aside class=&quot;aw-sidebar&quot;&gt;
+        &lt;div class=&quot;aw-workspace&quot;&gt;
+          &lt;strong&gt;Northstar Services&lt;/strong&gt;
+          &lt;span&gt;Operations workspace&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;nav class=&quot;aw-nav&quot; aria-label=&quot;Product navigation&quot;&gt;
+          &lt;div class=&quot;aw-nav-label admin-role&quot;&gt;Operate&lt;/div&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;overview&quot; aria-current=&quot;page&quot;&gt;&lt;i data-lucide=&quot;layout-dashboard&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Command center&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;workflows&quot;&gt;&lt;i data-lucide=&quot;workflow&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Workflows&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;agents&quot;&gt;&lt;i data-lucide=&quot;bot&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Agent team&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;approvals&quot;&gt;&lt;i data-lucide=&quot;circle-check-big&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Approvals &lt;span class=&quot;aw-nav-count&quot; data-approval-count&gt;3&lt;/span&gt;&lt;/button&gt;
+
+          &lt;div class=&quot;aw-nav-label admin-role&quot;&gt;Control&lt;/div&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;audit&quot;&gt;&lt;i data-lucide=&quot;scroll-text&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Audit log&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;connections&quot;&gt;&lt;i data-lucide=&quot;plug&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Connections&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;policies&quot;&gt;&lt;i data-lucide=&quot;shield-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Policies &amp; access&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button admin-role&quot; type=&quot;button&quot; data-screen-target=&quot;roi&quot;&gt;&lt;i data-lucide=&quot;chart-no-axes-combined&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;ROI report&lt;/button&gt;
+
+          &lt;div class=&quot;aw-nav-label employee-role&quot; hidden&gt;My workspace&lt;/div&gt;
+          &lt;button class=&quot;aw-nav-button employee-role&quot; type=&quot;button&quot; data-screen-target=&quot;employee-home&quot; hidden&gt;&lt;i data-lucide=&quot;inbox&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;My work&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button employee-role&quot; type=&quot;button&quot; data-screen-target=&quot;request&quot; hidden&gt;&lt;i data-lucide=&quot;sparkles&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Ask an agent&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button employee-role&quot; type=&quot;button&quot; data-screen-target=&quot;approvals&quot; hidden&gt;&lt;i data-lucide=&quot;circle-check-big&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;My approvals &lt;span class=&quot;aw-nav-count&quot; data-approval-count&gt;3&lt;/span&gt;&lt;/button&gt;
+          &lt;button class=&quot;aw-nav-button employee-role&quot; type=&quot;button&quot; data-screen-target=&quot;employee-history&quot; hidden&gt;&lt;i data-lucide=&quot;history&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;History&lt;/button&gt;
+        &lt;/nav&gt;
+        &lt;div class=&quot;aw-side-foot admin-role&quot;&gt;
+          &lt;strong&gt;System status&lt;/strong&gt;&lt;br&gt;
+          4 agents active · 99.8% uptime&lt;br&gt;
+          Last policy review: 4 days ago
+        &lt;/div&gt;
+      &lt;/aside&gt;
+
+      &lt;main class=&quot;aw-main&quot; id=&quot;aw-main-content&quot;&gt;
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;overview&quot;&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;
+            &lt;div&gt;
+              &lt;h1&gt;Command center&lt;/h1&gt;
+              &lt;p class=&quot;aw-subtitle&quot;&gt;Business outcomes, exceptions, and agent health — in one place.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt; All systems operating&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-metrics&quot;&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Work completed this month&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;1,284&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Across 6 live workflows&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Hours returned to teams&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;148h&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Estimated from baseline handling time&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Pipeline protected&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;$83k&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Leads reached before SLA breach&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Needs human decision&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot; data-approval-count&gt;3&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Nothing sent until approved&lt;/div&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-grid-2&quot;&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;
+              &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Live work&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;What your agent team is doing now&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-quiet&quot; type=&quot;button&quot; data-jump=&quot;workflows&quot;&gt;View workflows&lt;/button&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-work-list&quot;&gt;
+                &lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Lead follow-up&lt;/strong&gt;&lt;span&gt;Qualifying 18 new requests from HubSpot&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt;Running&lt;/span&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Invoice exception review&lt;/strong&gt;&lt;span&gt;Checking 7 records against NetSuite policy&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt;Running&lt;/span&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Customer escalation brief&lt;/strong&gt;&lt;span&gt;Waiting for account owner decision&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt;Waiting&lt;/span&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Weekly ops report&lt;/strong&gt;&lt;span&gt;Scheduled for Friday at 3:00 PM&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;Scheduled&lt;/span&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;aw-stack&quot;&gt;
+              &lt;div class=&quot;aw-panel&quot;&gt;
+                &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Attention needed&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Human-in-the-loop checkpoints&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Approve 18% renewal discount&lt;/strong&gt;&lt;span&gt;$21,600 annual contract · Sales&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-jump=&quot;approvals&quot;&gt;Review&lt;/button&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Reconnect Gmail&lt;/strong&gt;&lt;span&gt;Token expires in 2 days&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-jump=&quot;connections&quot;&gt;Fix&lt;/button&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;aw-panel&quot;&gt;
+                &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Automation rate&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;76% completed without intervention&lt;/p&gt;&lt;/div&gt;&lt;strong&gt;76%&lt;/strong&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-progress-track&quot; aria-label=&quot;Automation rate 76 percent&quot;&gt;&lt;div class=&quot;aw-progress-bar&quot; style=&quot;width:76%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:10px&quot;&gt;24% paused for policy checks, missing data, or human approval.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;workflows&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Workflows&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Turn one repeatable process into a governed AI runbook.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; data-open-wizard&gt;&lt;i data-lucide=&quot;plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;New workflow&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot;&gt;
+            &lt;div class=&quot;aw-table-wrap&quot;&gt;
+              &lt;table&gt;
+                &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Workflow&lt;/th&gt;&lt;th&gt;Owner&lt;/th&gt;&lt;th&gt;Runs this month&lt;/th&gt;&lt;th&gt;Success&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+                &lt;tbody&gt;
+                  &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Lead follow-up&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;aw-muted&quot;&gt;Inbound lead → booked call&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Revenue Ops&lt;/td&gt;&lt;td&gt;642&lt;/td&gt;&lt;td&gt;97%&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Live&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-edit-workflow&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Invoice exception review&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;aw-muted&quot;&gt;Flag → verify → route&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Finance&lt;/td&gt;&lt;td&gt;184&lt;/td&gt;&lt;td&gt;94%&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Live&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Customer escalation brief&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;aw-muted&quot;&gt;Ticket → summarize → assign&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Support&lt;/td&gt;&lt;td&gt;393&lt;/td&gt;&lt;td&gt;99%&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Live&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td&gt;&lt;strong&gt;New hire access setup&lt;/strong&gt;&lt;br&gt;&lt;span class=&quot;aw-muted&quot;&gt;HRIS record → permission request&lt;/span&gt;&lt;/td&gt;&lt;td&gt;People Ops&lt;/td&gt;&lt;td&gt;21&lt;/td&gt;&lt;td&gt;—&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge&quot;&gt;Draft&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;/tbody&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot; style=&quot;margin-top:12px&quot;&gt;
+            &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Lead follow-up runbook&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Every step is inspectable, permissioned, and logged.&lt;/p&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Version 7 · Live&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-flow-canvas&quot; aria-label=&quot;Lead follow-up workflow diagram&quot;&gt;
+              &lt;div class=&quot;aw-flow-step&quot;&gt;&lt;div class=&quot;aw-step-icon&quot;&gt;&lt;i data-lucide=&quot;radio-tower&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;strong&gt;New lead&lt;/strong&gt;&lt;span&gt;HubSpot form or missed call&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-flow-step&quot;&gt;&lt;div class=&quot;aw-step-icon&quot;&gt;&lt;i data-lucide=&quot;search-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;strong&gt;Enrich &amp; qualify&lt;/strong&gt;&lt;span&gt;Check territory, fit, and duplicates&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-flow-step&quot;&gt;&lt;div class=&quot;aw-step-icon&quot;&gt;&lt;i data-lucide=&quot;message-square-text&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;strong&gt;Draft outreach&lt;/strong&gt;&lt;span&gt;Use approved tone and offer&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-flow-step aw-gate&quot;&gt;&lt;div class=&quot;aw-step-icon&quot;&gt;&lt;i data-lucide=&quot;user-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;strong&gt;Approval gate&lt;/strong&gt;&lt;span&gt;Required only for discounts above 15%&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-flow-step&quot;&gt;&lt;div class=&quot;aw-step-icon&quot;&gt;&lt;i data-lucide=&quot;send&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;strong&gt;Send &amp; update&lt;/strong&gt;&lt;span&gt;Email, Slack owner, write CRM&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;aw-builder-actions&quot;&gt;&lt;div class=&quot;aw-small aw-muted&quot;&gt;Trigger: real-time · Max spend: $2/run · Owner: Maya Chen&lt;/div&gt;&lt;div class=&quot;aw-inline&quot; style=&quot;gap:8px&quot;&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Test run&lt;/button&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Edit runbook&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;agents&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Agent team&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Role-based AI workers with clear jobs, tools, limits, and owners.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; data-open-wizard&gt;&lt;i data-lucide=&quot;plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Add agent&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-agent-grid&quot;&gt;
+            &lt;article class=&quot;aw-agent-card&quot;&gt;&lt;div class=&quot;aw-row&quot;&gt;&lt;div class=&quot;aw-agent-icon&quot;&gt;&lt;i data-lucide=&quot;badge-dollar-sign&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt;Active&lt;/span&gt;&lt;/div&gt;&lt;h3&gt;Lead Recovery Agent&lt;/h3&gt;&lt;p&gt;Qualifies missed leads, drafts personalized follow-up, and updates HubSpot.&lt;/p&gt;&lt;div class=&quot;aw-agent-meta&quot;&gt;Owner: Revenue Ops · 3 tools · $410/mo limit&lt;/div&gt;&lt;/article&gt;
+            &lt;article class=&quot;aw-agent-card&quot;&gt;&lt;div class=&quot;aw-row&quot;&gt;&lt;div class=&quot;aw-agent-icon&quot;&gt;&lt;i data-lucide=&quot;receipt-text&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt;Active&lt;/span&gt;&lt;/div&gt;&lt;h3&gt;Finance Exception Agent&lt;/h3&gt;&lt;p&gt;Verifies invoice mismatches, gathers evidence, and routes exceptions.&lt;/p&gt;&lt;div class=&quot;aw-agent-meta&quot;&gt;Owner: Controller · 2 tools · $250/mo limit&lt;/div&gt;&lt;/article&gt;
+            &lt;article class=&quot;aw-agent-card&quot;&gt;&lt;div class=&quot;aw-row&quot;&gt;&lt;div class=&quot;aw-agent-icon&quot;&gt;&lt;i data-lucide=&quot;headphones&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;&lt;span class=&quot;aw-dot&quot;&gt;&lt;/span&gt;Needs review&lt;/span&gt;&lt;/div&gt;&lt;h3&gt;Escalation Briefing Agent&lt;/h3&gt;&lt;p&gt;Builds account context and recommends the next owner action.&lt;/p&gt;&lt;div class=&quot;aw-agent-meta&quot;&gt;Owner: Support Ops · 4 tools · $180/mo limit&lt;/div&gt;&lt;/article&gt;
+            &lt;article class=&quot;aw-agent-card&quot;&gt;&lt;div class=&quot;aw-row&quot;&gt;&lt;div class=&quot;aw-agent-icon&quot;&gt;&lt;i data-lucide=&quot;clipboard-list&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;Draft&lt;/span&gt;&lt;/div&gt;&lt;h3&gt;Weekly Reporting Agent&lt;/h3&gt;&lt;p&gt;Combines operating metrics into a leadership-ready Friday brief.&lt;/p&gt;&lt;div class=&quot;aw-agent-meta&quot;&gt;Owner: COO Office · 5 tools · Not deployed&lt;/div&gt;&lt;/article&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot; style=&quot;margin-top:12px&quot;&gt;
+            &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Lead Recovery Agent — operating contract&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;The boundaries an owner approves before launch.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Edit contract&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-detail-grid&quot;&gt;
+              &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Goal&lt;/span&gt;&lt;strong&gt;Reach qualified leads within 5 minutes&lt;/strong&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Escalates when&lt;/span&gt;&lt;strong&gt;Discount &amp;gt;15% or confidence &amp;lt;80%&lt;/strong&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Can use&lt;/span&gt;&lt;strong&gt;HubSpot, Gmail, Slack&lt;/strong&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Cannot do&lt;/span&gt;&lt;strong&gt;Delete records or change pricing&lt;/strong&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;approvals&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Approvals&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Fast human decisions with the evidence and policy shown upfront.&lt;/p&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;&lt;span data-approval-count&gt;3&lt;/span&gt; waiting&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-approval-layout&quot;&gt;
+            &lt;div class=&quot;aw-stack&quot;&gt;
+              &lt;article class=&quot;aw-approval-card&quot; aria-selected=&quot;true&quot;&gt;&lt;button type=&quot;button&quot;&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;Revenue impact&lt;/span&gt;&lt;h3 style=&quot;margin-top:9px&quot;&gt;Approve 18% renewal discount&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:5px&quot;&gt;Brightpath Inc. · $21,600 ARR&lt;/p&gt;&lt;/button&gt;&lt;/article&gt;
+              &lt;article class=&quot;aw-approval-card&quot;&gt;&lt;button type=&quot;button&quot;&gt;&lt;span class=&quot;aw-badge&quot;&gt;External send&lt;/span&gt;&lt;h3 style=&quot;margin-top:9px&quot;&gt;Send recovery email to 42 leads&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:5px&quot;&gt;Campaign: Q3 webinar no-shows&lt;/p&gt;&lt;/button&gt;&lt;/article&gt;
+              &lt;article class=&quot;aw-approval-card&quot;&gt;&lt;button type=&quot;button&quot;&gt;&lt;span class=&quot;aw-badge aw-badge-bad&quot;&gt;Access request&lt;/span&gt;&lt;h3 style=&quot;margin-top:9px&quot;&gt;Read contract attachments&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:5px&quot;&gt;Finance Exception Agent&lt;/p&gt;&lt;/button&gt;&lt;/article&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;aw-panel aw-approval-detail&quot;&gt;
+              &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;Policy gate: discount above 15%&lt;/span&gt;&lt;h2 style=&quot;margin-top:10px&quot;&gt;Renewal offer for Brightpath Inc.&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Requested by Lead Recovery Agent · 9:42 AM&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-quiet&quot; type=&quot;button&quot; aria-label=&quot;More approval options&quot;&gt;&lt;i data-lucide=&quot;ellipsis&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-detail-grid&quot;&gt;&lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Proposed discount&lt;/span&gt;&lt;strong&gt;18% for 12 months&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Contract value&lt;/span&gt;&lt;strong&gt;$21,600 ARR&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Model confidence&lt;/span&gt;&lt;strong&gt;87% · high&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Deadline&lt;/span&gt;&lt;strong&gt;Today, 2:00 PM&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+              &lt;h3 style=&quot;margin-bottom:8px&quot;&gt;Why the agent recommends this&lt;/h3&gt;
+              &lt;div class=&quot;aw-evidence&quot;&gt;The account viewed the cancellation page twice and cited a competitor offer. An 18% discount keeps gross margin above the approved 62% floor. Similar retained accounts accepted 15–20% offers.&lt;/div&gt;
+              &lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:11px&quot;&gt;Sources: HubSpot opportunity, call transcript, pricing policy v4.2 · Every source will be attached to the audit record.&lt;/p&gt;
+              &lt;div class=&quot;aw-approval-actions&quot;&gt;&lt;button class=&quot;aw-button aw-button-danger&quot; type=&quot;button&quot; data-approval-action=&quot;declined&quot;&gt;Decline&lt;/button&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-approval-action=&quot;edited&quot;&gt;Edit terms&lt;/button&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; data-approval-action=&quot;approved&quot;&gt;&lt;i data-lucide=&quot;check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Approve&lt;/button&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;audit&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Audit log&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;A replayable record of every trigger, decision, tool call, approval, and outcome.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;download&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Export evidence&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot;&gt;
+            &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Run #LF-10984&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Lead follow-up · Completed in 2m 14s · Cost $0.62&lt;/p&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Completed&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-timeline&quot;&gt;
+              &lt;div class=&quot;aw-event&quot;&gt;&lt;span class=&quot;aw-event-time&quot;&gt;9:40:01&lt;/span&gt;&lt;span class=&quot;aw-event-mark&quot;&gt;&lt;/span&gt;&lt;div class=&quot;aw-event-main&quot;&gt;&lt;strong&gt;Trigger received&lt;/strong&gt;&lt;span&gt;New HubSpot lead: Brightpath Inc. · Source payload saved&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;System&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-event&quot;&gt;&lt;span class=&quot;aw-event-time&quot;&gt;9:40:06&lt;/span&gt;&lt;span class=&quot;aw-event-mark&quot;&gt;&lt;/span&gt;&lt;div class=&quot;aw-event-main&quot;&gt;&lt;strong&gt;Lead enriched&lt;/strong&gt;&lt;span&gt;Matched company, territory, and account history · 3 sources read&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;Agent&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-event&quot;&gt;&lt;span class=&quot;aw-event-time&quot;&gt;9:40:18&lt;/span&gt;&lt;span class=&quot;aw-event-mark&quot;&gt;&lt;/span&gt;&lt;div class=&quot;aw-event-main&quot;&gt;&lt;strong&gt;Policy evaluated&lt;/strong&gt;&lt;span&gt;Requested discount 18% exceeds autonomous limit of 15%&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;Gate&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-event&quot;&gt;&lt;span class=&quot;aw-event-time&quot;&gt;9:42:03&lt;/span&gt;&lt;span class=&quot;aw-event-mark&quot;&gt;&lt;/span&gt;&lt;div class=&quot;aw-event-main&quot;&gt;&lt;strong&gt;Human approval recorded&lt;/strong&gt;&lt;span&gt;Maya Chen approved the recommendation without edits&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;Human&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-event&quot;&gt;&lt;span class=&quot;aw-event-time&quot;&gt;9:42:15&lt;/span&gt;&lt;span class=&quot;aw-event-mark&quot;&gt;&lt;/span&gt;&lt;div class=&quot;aw-event-main&quot;&gt;&lt;strong&gt;Actions completed&lt;/strong&gt;&lt;span&gt;Email sent · CRM updated · Account owner notified in Slack&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Outcome&lt;/span&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-grid-even&quot; style=&quot;margin-top:12px&quot;&gt;&lt;div class=&quot;aw-panel&quot;&gt;&lt;h2&gt;Decision inputs&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:8px&quot;&gt;Prompt version 12 · Pricing policy v4.2 · CRM snapshot retained · Model version recorded&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;aw-panel&quot;&gt;&lt;h2&gt;Reproduce or investigate&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:8px&quot;&gt;Replay this run with the same inputs, compare a new policy, or flag it for compliance review.&lt;/p&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; style=&quot;margin-top:12px&quot;&gt;Replay in sandbox&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;connections&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Connections&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Connect the systems agents may read or act in. Permissions stay explicit.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Add connection&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-connection-grid&quot;&gt;
+            &lt;div class=&quot;aw-connection&quot;&gt;&lt;div class=&quot;aw-connection-main&quot;&gt;&lt;div class=&quot;aw-connection-icon&quot;&gt;&lt;i data-lucide=&quot;database&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;HubSpot&lt;/strong&gt;&lt;span&gt;Read leads · Update deals&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-connection=&quot;HubSpot&quot;&gt;Manage&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-connection&quot;&gt;&lt;div class=&quot;aw-connection-main&quot;&gt;&lt;div class=&quot;aw-connection-icon&quot;&gt;&lt;i data-lucide=&quot;mail&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Gmail&lt;/strong&gt;&lt;span&gt;Draft · Send with policy&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-connection=&quot;Gmail&quot;&gt;Reconnect&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-connection&quot;&gt;&lt;div class=&quot;aw-connection-main&quot;&gt;&lt;div class=&quot;aw-connection-icon&quot;&gt;&lt;i data-lucide=&quot;message-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Slack&lt;/strong&gt;&lt;span&gt;Post · Request approval&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-connection=&quot;Slack&quot;&gt;Manage&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-connection&quot;&gt;&lt;div class=&quot;aw-connection-main&quot;&gt;&lt;div class=&quot;aw-connection-icon&quot;&gt;&lt;i data-lucide=&quot;landmark&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;NetSuite&lt;/strong&gt;&lt;span&gt;Read invoices only&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-connection=&quot;NetSuite&quot;&gt;Manage&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-connection&quot;&gt;&lt;div class=&quot;aw-connection-main&quot;&gt;&lt;div class=&quot;aw-connection-icon&quot;&gt;&lt;i data-lucide=&quot;folder-lock&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Google Drive&lt;/strong&gt;&lt;span&gt;Not connected&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-connection=&quot;Google Drive&quot;&gt;Connect&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-connection&quot;&gt;&lt;div class=&quot;aw-connection-main&quot;&gt;&lt;div class=&quot;aw-connection-icon&quot;&gt;&lt;i data-lucide=&quot;ticket-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Zendesk&lt;/strong&gt;&lt;span&gt;Read tickets · Add notes&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-connection=&quot;Zendesk&quot;&gt;Manage&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot; style=&quot;margin-top:12px&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Permission preview&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;A connection does not grant every agent access.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class=&quot;aw-small&quot;&gt;The &lt;strong&gt;Lead Recovery Agent&lt;/strong&gt; can read and update HubSpot leads, draft Gmail messages, and notify the account owner in Slack. It cannot delete records, read inbox history, or change deal pricing.&lt;/p&gt;&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;policies&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Policies &amp; access&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Set company rules once; enforce them across every agent and run.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Test a scenario&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-grid-2&quot;&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;
+              &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Guardrails&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Plain-language controls for risky actions&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-policy-list&quot;&gt;
+                &lt;label class=&quot;aw-policy&quot;&gt;&lt;span class=&quot;aw-policy-head&quot;&gt;&lt;span class=&quot;aw-policy-copy&quot;&gt;&lt;strong&gt;Require approval before external sends&lt;/strong&gt;&lt;span&gt;Except pre-approved templates below risk level 2&lt;/span&gt;&lt;/span&gt;&lt;input class=&quot;aw-toggle&quot; type=&quot;checkbox&quot; checked&gt;&lt;/span&gt;&lt;/label&gt;
+                &lt;label class=&quot;aw-policy&quot;&gt;&lt;span class=&quot;aw-policy-head&quot;&gt;&lt;span class=&quot;aw-policy-copy&quot;&gt;&lt;strong&gt;Block destructive data actions&lt;/strong&gt;&lt;span&gt;No deletes, bulk edits, or permission changes&lt;/span&gt;&lt;/span&gt;&lt;input class=&quot;aw-toggle&quot; type=&quot;checkbox&quot; checked&gt;&lt;/span&gt;&lt;/label&gt;
+                &lt;label class=&quot;aw-policy&quot;&gt;&lt;span class=&quot;aw-policy-head&quot;&gt;&lt;span class=&quot;aw-policy-copy&quot;&gt;&lt;strong&gt;Mask sensitive customer data&lt;/strong&gt;&lt;span&gt;Hide payment details and government IDs&lt;/span&gt;&lt;/span&gt;&lt;input class=&quot;aw-toggle&quot; type=&quot;checkbox&quot; checked&gt;&lt;/span&gt;&lt;/label&gt;
+                &lt;label class=&quot;aw-policy&quot;&gt;&lt;span class=&quot;aw-policy-head&quot;&gt;&lt;span class=&quot;aw-policy-copy&quot;&gt;&lt;strong&gt;Pause low-confidence decisions&lt;/strong&gt;&lt;span&gt;Send to a human when confidence is below 80%&lt;/span&gt;&lt;/span&gt;&lt;input class=&quot;aw-toggle&quot; type=&quot;checkbox&quot; checked&gt;&lt;/span&gt;&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;
+              &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Autonomy levels&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;A simple contract teams can understand&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-stack&quot;&gt;
+                &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Level 1 · Assist&lt;/span&gt;&lt;strong&gt;Draft only; human completes action&lt;/strong&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-detail-cell&quot; style=&quot;border:1px solid var(--aidan-accent)&quot;&gt;&lt;span&gt;Level 2 · Execute with gates&lt;/span&gt;&lt;strong&gt;Act inside limits; escalate exceptions&lt;/strong&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Level 3 · Autonomous&lt;/span&gt;&lt;strong&gt;Act and report; reserved for low-risk tasks&lt;/strong&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot; style=&quot;margin-top:12px&quot;&gt;
+            &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Agent access matrix&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Allowed · Approval required · Blocked&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Edit access&lt;/button&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-table-wrap&quot;&gt;&lt;table class=&quot;aw-matrix&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Agent&lt;/th&gt;&lt;th&gt;CRM&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;th&gt;Finance&lt;/th&gt;&lt;th&gt;Files&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Lead Recovery&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Allow&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;Gate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-bad&quot;&gt;Block&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;Gate&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Finance Exception&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-bad&quot;&gt;Block&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;Gate&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Allow&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Allow&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Escalation Briefing&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Allow&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-bad&quot;&gt;Block&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-bad&quot;&gt;Block&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Allow&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;roi&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;ROI report&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Show leadership where agents save time, protect revenue, and reduce operational risk.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;calendar-days&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;This month&lt;/button&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-metrics&quot;&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Estimated value created&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;$31.4k&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Revenue protected + labor returned&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Platform + model cost&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;$4.8k&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Includes 1,284 completed runs&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Net operating value&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;$26.6k&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;5.5× estimated return&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Exceptions caught&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;47&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Before external action or SLA breach&lt;/div&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-grid-2&quot;&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Value by workflow&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Based on editable business assumptions&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-bars&quot;&gt;&lt;div class=&quot;aw-bar-row&quot;&gt;&lt;span&gt;Lead follow-up&lt;/span&gt;&lt;div class=&quot;aw-progress-track&quot;&gt;&lt;div class=&quot;aw-progress-bar&quot; style=&quot;width:100%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;aw-bar-value&quot;&gt;$18.2k&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-bar-row&quot;&gt;&lt;span&gt;Invoice review&lt;/span&gt;&lt;div class=&quot;aw-progress-track&quot;&gt;&lt;div class=&quot;aw-progress-bar&quot; style=&quot;width:46%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;aw-bar-value&quot;&gt;$8.4k&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-bar-row&quot;&gt;&lt;span&gt;Support brief&lt;/span&gt;&lt;div class=&quot;aw-progress-track&quot;&gt;&lt;div class=&quot;aw-progress-bar&quot; style=&quot;width:26%&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;span class=&quot;aw-bar-value&quot;&gt;$4.8k&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Trust &amp; control&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Operational quality leaders can audit&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-stack&quot;&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;96.8% successful runs&lt;/strong&gt;&lt;span&gt;42 exceptions routed correctly&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;0 unauthorized actions&lt;/strong&gt;&lt;span&gt;All 19 policy gates enforced&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;2.4 min average approval&lt;/strong&gt;&lt;span&gt;Down from 4.1 hours manually&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot; style=&quot;margin-top:12px&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;How value is calculated&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;No magic score: volume × verified baseline time/cost, plus linked business outcomes.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Edit assumptions&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;employee-home&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;My work&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Start a request, review exceptions, or pick up where an agent stopped.&lt;/p&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;Thursday, Sep 3&lt;/span&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-metrics&quot;&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Waiting on me&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot; data-approval-count&gt;3&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Approvals and missing context&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;In progress&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Agents working in the background&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;Completed this week&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;9.3 hours of manual work avoided&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-metric&quot;&gt;&lt;div class=&quot;aw-metric-label&quot;&gt;My available agents&lt;/div&gt;&lt;div class=&quot;aw-metric-value&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;aw-metric-note&quot;&gt;Assigned by Operations&lt;/div&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-grid-2&quot;&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Needs your input&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;The agent did the prep; you make the judgment call.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Approve Brightpath renewal offer&lt;/strong&gt;&lt;span&gt;Evidence ready · Due today at 2:00 PM&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-jump=&quot;approvals&quot;&gt;Review&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Add context for Acme escalation&lt;/strong&gt;&lt;span&gt;Agent could not verify account priority&lt;/span&gt;&lt;/div&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Add context&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;aw-panel&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Quick request&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Delegate work without choosing models or tools.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-quick-prompts&quot;&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-quick-request=&quot;Prepare my weekly pipeline brief&quot;&gt;Weekly pipeline brief&lt;/button&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-quick-request=&quot;Research and qualify a new lead&quot;&gt;Qualify a lead&lt;/button&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-quick-request=&quot;Summarize a customer escalation&quot;&gt;Summarize escalation&lt;/button&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; data-jump=&quot;request&quot; style=&quot;margin-top:14px;width:100%&quot;&gt;Ask an agent&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot; style=&quot;margin-top:12px&quot;&gt;&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Agents working for you&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;Follow progress; only step in when asked.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Lead Recovery Agent&lt;/strong&gt;&lt;span&gt;Drafting responses for 18 inbound leads&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Running&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-list-item&quot;&gt;&lt;div class=&quot;aw-list-main&quot;&gt;&lt;strong&gt;Weekly Reporting Agent&lt;/strong&gt;&lt;span&gt;Waiting for Friday 3:00 PM schedule&lt;/span&gt;&lt;/div&gt;&lt;span class=&quot;aw-badge&quot;&gt;Scheduled&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;request&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;Ask an agent&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Describe the outcome. AIDAN selects an approved runbook and shows what it will do.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-grid-2&quot;&gt;
+            &lt;form class=&quot;aw-request-card&quot; id=&quot;aw-request-form&quot;&gt;
+              &lt;div class=&quot;aw-field-group&quot;&gt;&lt;label for=&quot;aw-request-text&quot;&gt;What needs to get done?&lt;/label&gt;&lt;textarea class=&quot;aw-textarea&quot; id=&quot;aw-request-text&quot; placeholder=&quot;Example: Prepare a renewal brief for Brightpath before my 2 PM call.&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-grid-even&quot;&gt;&lt;div class=&quot;aw-field-group&quot;&gt;&lt;label for=&quot;aw-deadline&quot;&gt;Deadline&lt;/label&gt;&lt;select class=&quot;aw-field&quot; id=&quot;aw-deadline&quot;&gt;&lt;option&gt;Today&lt;/option&gt;&lt;option&gt;This week&lt;/option&gt;&lt;option&gt;No deadline&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;div class=&quot;aw-field-group&quot;&gt;&lt;label for=&quot;aw-sensitivity&quot;&gt;Data sensitivity&lt;/label&gt;&lt;select class=&quot;aw-field&quot; id=&quot;aw-sensitivity&quot;&gt;&lt;option&gt;Standard business data&lt;/option&gt;&lt;option&gt;Customer confidential&lt;/option&gt;&lt;option&gt;Restricted&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-field-group&quot;&gt;&lt;label&gt;Suggested requests&lt;/label&gt;&lt;div class=&quot;aw-quick-prompts&quot;&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-quick-request=&quot;Prepare my weekly pipeline brief&quot;&gt;Weekly pipeline brief&lt;/button&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; data-quick-request=&quot;Research and qualify a new lead&quot;&gt;Qualify a lead&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+              &lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; id=&quot;aw-review-plan&quot;&gt;Review plan&lt;/button&gt;
+            &lt;/form&gt;
+            &lt;div class=&quot;aw-panel&quot; id=&quot;aw-request-plan&quot;&gt;
+              &lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;h2&gt;Before anything runs&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot;&gt;You will see the plan, access, and approval points.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+              &lt;div class=&quot;aw-stack&quot;&gt;
+                &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;1 · AIDAN routes the request&lt;/span&gt;&lt;strong&gt;Chooses an approved agent and runbook&lt;/strong&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;2 · You review the plan&lt;/span&gt;&lt;strong&gt;Sources, actions, cost limit, and deadline&lt;/strong&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;3 · The agent works&lt;/span&gt;&lt;strong&gt;Progress appears in My work&lt;/strong&gt;&lt;/div&gt;
+                &lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;4 · You stay in control&lt;/span&gt;&lt;strong&gt;Risky actions pause for approval&lt;/strong&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section class=&quot;aw-screen&quot; data-screen=&quot;employee-history&quot; hidden&gt;
+          &lt;div class=&quot;aw-title-row&quot;&gt;&lt;div&gt;&lt;h1&gt;History&lt;/h1&gt;&lt;p class=&quot;aw-subtitle&quot;&gt;Everything you delegated, with its sources, decisions, and final result.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&quot;aw-panel&quot;&gt;&lt;div class=&quot;aw-table-wrap&quot;&gt;&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Request&lt;/th&gt;&lt;th&gt;Agent&lt;/th&gt;&lt;th&gt;Completed&lt;/th&gt;&lt;th&gt;Outcome&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Prepare Brightpath account brief&lt;/td&gt;&lt;td&gt;Lead Recovery&lt;/td&gt;&lt;td&gt;Today, 9:12 AM&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Delivered&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Summarize Acme escalation&lt;/td&gt;&lt;td&gt;Escalation Briefing&lt;/td&gt;&lt;td&gt;Yesterday&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Delivered&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Update 14 stale opportunities&lt;/td&gt;&lt;td&gt;Lead Recovery&lt;/td&gt;&lt;td&gt;Tue, Sep 1&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-warn&quot;&gt;3 skipped&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Create weekly sales brief&lt;/td&gt;&lt;td&gt;Weekly Reporting&lt;/td&gt;&lt;td&gt;Fri, Aug 28&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Delivered&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot;&gt;Open&lt;/button&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;aw-modal-backdrop&quot; id=&quot;aw-wizard&quot; hidden&gt;
+      &lt;section class=&quot;aw-modal&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;aw-wizard-title&quot;&gt;
+        &lt;div class=&quot;aw-modal-head&quot;&gt;&lt;div&gt;&lt;h2 id=&quot;aw-wizard-title&quot;&gt;Deploy a governed workflow&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:4px&quot;&gt;Start from an outcome, then set the boundaries.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-quiet&quot; type=&quot;button&quot; id=&quot;aw-close-wizard&quot; aria-label=&quot;Close setup&quot;&gt;&lt;i data-lucide=&quot;x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;
+        &lt;div class=&quot;aw-modal-body&quot;&gt;
+          &lt;div class=&quot;aw-stepper&quot; aria-label=&quot;Setup progress&quot;&gt;&lt;div class=&quot;aw-stepper-item is-active&quot; data-step-indicator=&quot;1&quot;&gt;&lt;span class=&quot;aw-stepper-line&quot;&gt;&lt;/span&gt;&lt;span&gt;1. Outcome&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-stepper-item&quot; data-step-indicator=&quot;2&quot;&gt;&lt;span class=&quot;aw-stepper-line&quot;&gt;&lt;/span&gt;&lt;span&gt;2. Runbook&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-stepper-item&quot; data-step-indicator=&quot;3&quot;&gt;&lt;span class=&quot;aw-stepper-line&quot;&gt;&lt;/span&gt;&lt;span&gt;3. Guardrails&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-stepper-item&quot; data-step-indicator=&quot;4&quot;&gt;&lt;span class=&quot;aw-stepper-line&quot;&gt;&lt;/span&gt;&lt;span&gt;4. Test &amp; launch&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div data-wizard-step=&quot;1&quot;&gt;&lt;h3&gt;What outcome should AIDAN own?&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin:5px 0 14px&quot;&gt;Choose one measurable workflow. You can customize it next.&lt;/p&gt;&lt;div class=&quot;aw-template-grid&quot;&gt;&lt;button class=&quot;aw-template is-selected&quot; type=&quot;button&quot;&gt;&lt;strong&gt;Recover missed leads&lt;/strong&gt;&lt;span&gt;Respond, qualify, book, and update CRM&lt;/span&gt;&lt;/button&gt;&lt;button class=&quot;aw-template&quot; type=&quot;button&quot;&gt;&lt;strong&gt;Review invoice exceptions&lt;/strong&gt;&lt;span&gt;Verify mismatches and route evidence&lt;/span&gt;&lt;/button&gt;&lt;button class=&quot;aw-template&quot; type=&quot;button&quot;&gt;&lt;strong&gt;Prepare escalation briefs&lt;/strong&gt;&lt;span&gt;Gather context and recommend next action&lt;/span&gt;&lt;/button&gt;&lt;button class=&quot;aw-template&quot; type=&quot;button&quot;&gt;&lt;strong&gt;Start from scratch&lt;/strong&gt;&lt;span&gt;Build a runbook around another process&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div data-wizard-step=&quot;2&quot; hidden&gt;&lt;h3&gt;Confirm the runbook&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin:5px 0 14px&quot;&gt;AIDAN proposes a first draft from the selected outcome.&lt;/p&gt;&lt;div class=&quot;aw-check-list&quot;&gt;&lt;div class=&quot;aw-check-row&quot;&gt;&lt;i data-lucide=&quot;check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;&lt;strong&gt;Trigger:&lt;/strong&gt; New lead enters HubSpot or a call is missed&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-check-row&quot;&gt;&lt;i data-lucide=&quot;check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;&lt;strong&gt;Work:&lt;/strong&gt; Enrich, qualify, draft follow-up, and schedule next step&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-check-row&quot;&gt;&lt;i data-lucide=&quot;check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;&lt;strong&gt;Outcome:&lt;/strong&gt; Contacted in under 5 minutes with CRM updated&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div data-wizard-step=&quot;3&quot; hidden&gt;&lt;h3&gt;Set the safe operating boundary&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin:5px 0 14px&quot;&gt;Start conservative; expand autonomy after real runs earn trust.&lt;/p&gt;&lt;div class=&quot;aw-check-list&quot;&gt;&lt;label class=&quot;aw-check-row&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt;&lt;span&gt;Require approval for discounts above 15%&lt;/span&gt;&lt;/label&gt;&lt;label class=&quot;aw-check-row&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt;&lt;span&gt;Require approval when confidence is below 80%&lt;/span&gt;&lt;/label&gt;&lt;label class=&quot;aw-check-row&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt;&lt;span&gt;Block record deletion and pricing changes&lt;/span&gt;&lt;/label&gt;&lt;label class=&quot;aw-check-row&quot;&gt;&lt;input type=&quot;checkbox&quot; checked&gt;&lt;span&gt;Cap workflow spend at $2 per run&lt;/span&gt;&lt;/label&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div data-wizard-step=&quot;4&quot; hidden&gt;&lt;h3&gt;Run a sandbox test&lt;/h3&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin:5px 0 14px&quot;&gt;Use copied data; no emails are sent and no records are changed.&lt;/p&gt;&lt;div class=&quot;aw-evidence&quot;&gt;&lt;strong&gt;Test passed.&lt;/strong&gt; The agent qualified the lead, drafted a policy-compliant reply, paused at the 18% discount gate, and produced a complete audit record.&lt;/div&gt;&lt;div class=&quot;aw-detail-grid&quot;&gt;&lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Projected monthly volume&lt;/span&gt;&lt;strong&gt;600–750 runs&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;aw-detail-cell&quot;&gt;&lt;span&gt;Estimated operating cost&lt;/span&gt;&lt;strong&gt;$320–$460/month&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;aw-modal-foot&quot;&gt;&lt;button class=&quot;aw-button&quot; type=&quot;button&quot; id=&quot;aw-wizard-back&quot; disabled&gt;Back&lt;/button&gt;&lt;div class=&quot;aw-inline&quot; style=&quot;gap:8px&quot;&gt;&lt;span class=&quot;aw-small aw-muted&quot; id=&quot;aw-step-copy&quot;&gt;Step 1 of 4&lt;/span&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; id=&quot;aw-wizard-next&quot;&gt;Continue&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;aw-toast&quot; id=&quot;aw-toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot; hidden&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById('aidan-orchestrator-wireframe');
+      if (!root) return;
+      const screens = Array.from(root.querySelectorAll('[data-screen]'));
+      const navButtons = Array.from(root.querySelectorAll('[data-screen-target]'));
+      const roleSelect = root.querySelector('#aw-role');
+      const primaryAction = root.querySelector('#aw-primary-action');
+      const primaryLabel = primaryAction.querySelector('span');
+      const wizard = root.querySelector('#aw-wizard');
+      const toast = root.querySelector('#aw-toast');
+      let wizardStep = 1;
+      let approvalCount = 3;
+
+      function showScreen(name) {
+        screens.forEach((screen) =&gt; { screen.hidden = screen.dataset.screen !== name; });
+        navButtons.forEach((button) =&gt; {
+          if (button.dataset.screenTarget === name &amp;&amp; !button.hidden) button.setAttribute('aria-current', 'page');
+          else button.removeAttribute('aria-current');
+        });
+      }
+
+      function flash(message) {
+        toast.textContent = message;
+        toast.hidden = false;
+        window.setTimeout(() =&gt; { toast.hidden = true; }, 2600);
+      }
+
+      function setRole(role) {
+        const admin = role === 'admin';
+        root.querySelectorAll('.admin-role').forEach((item) =&gt; { item.hidden = !admin; });
+        root.querySelectorAll('.employee-role').forEach((item) =&gt; { item.hidden = admin; });
+        primaryLabel.textContent = admin ? 'Deploy workflow' : 'New request';
+        showScreen(admin ? 'overview' : 'employee-home');
+      }
+
+      function updateWizard() {
+        root.querySelectorAll('[data-wizard-step]').forEach((panel) =&gt; { panel.hidden = Number(panel.dataset.wizardStep) !== wizardStep; });
+        root.querySelectorAll('[data-step-indicator]').forEach((indicator) =&gt; {
+          const step = Number(indicator.dataset.stepIndicator);
+          indicator.classList.toggle('is-active', step === wizardStep);
+          indicator.classList.toggle('is-done', step &lt; wizardStep);
+        });
+        root.querySelector('#aw-wizard-back').disabled = wizardStep === 1;
+        root.querySelector('#aw-wizard-next').textContent = wizardStep === 4 ? 'Launch workflow' : 'Continue';
+        root.querySelector('#aw-step-copy').textContent = `Step ${wizardStep} of 4`;
+      }
+
+      function openWizard() {
+        wizardStep = 1;
+        updateWizard();
+        wizard.hidden = false;
+        root.querySelector('#aw-close-wizard').focus();
+      }
+
+      navButtons.forEach((button) =&gt; button.addEventListener('click', () =&gt; showScreen(button.dataset.screenTarget)));
+      root.querySelectorAll('[data-jump]').forEach((button) =&gt; button.addEventListener('click', () =&gt; showScreen(button.dataset.jump)));
+      root.querySelectorAll('[data-open-wizard]').forEach((button) =&gt; button.addEventListener('click', openWizard));
+      root.querySelector('[data-edit-workflow]').addEventListener('click', () =&gt; flash('Runbook opened below.'));
+      roleSelect.addEventListener('change', () =&gt; setRole(roleSelect.value));
+      primaryAction.addEventListener('click', () =&gt; {
+        if (roleSelect.value === 'admin') openWizard();
+        else showScreen('request');
+      });
+
+      root.querySelector('#aw-close-wizard').addEventListener('click', () =&gt; { wizard.hidden = true; });
+      root.querySelector('#aw-wizard-back').addEventListener('click', () =&gt; { if (wizardStep &gt; 1) { wizardStep -= 1; updateWizard(); } });
+      root.querySelector('#aw-wizard-next').addEventListener('click', () =&gt; {
+        if (wizardStep &lt; 4) { wizardStep += 1; updateWizard(); return; }
+        wizard.hidden = true;
+        showScreen('workflows');
+        flash('Lead Recovery workflow launched with approval gates on.');
+      });
+      root.querySelectorAll('.aw-template').forEach((template) =&gt; template.addEventListener('click', () =&gt; {
+        root.querySelectorAll('.aw-template').forEach((item) =&gt; item.classList.remove('is-selected'));
+        template.classList.add('is-selected');
+      }));
+
+      root.querySelectorAll('[data-approval-action]').forEach((button) =&gt; button.addEventListener('click', () =&gt; {
+        const result = button.dataset.approvalAction;
+        if (approvalCount &gt; 0) approvalCount -= 1;
+        root.querySelectorAll('[data-approval-count]').forEach((node) =&gt; { node.textContent = String(approvalCount); });
+        root.querySelectorAll('[data-approval-action]').forEach((action) =&gt; { action.disabled = true; });
+        flash(`Decision recorded: ${result}. The agent and audit log were updated.`);
+      }));
+
+      root.querySelectorAll('[data-connection]').forEach((button) =&gt; button.addEventListener('click', () =&gt; {
+        button.textContent = 'Connected';
+        button.disabled = true;
+        flash(`${button.dataset.connection} connection verified.`);
+      }));
+
+      root.querySelectorAll('[data-quick-request]').forEach((button) =&gt; button.addEventListener('click', () =&gt; {
+        const field = root.querySelector('#aw-request-text');
+        field.value = button.dataset.quickRequest;
+        showScreen('request');
+        field.focus();
+      }));
+
+      root.querySelector('#aw-review-plan').addEventListener('click', () =&gt; {
+        const value = root.querySelector('#aw-request-text').value.trim();
+        if (!value) { flash('Describe the outcome first.'); return; }
+        root.querySelector('#aw-request-plan').innerHTML = '&lt;div class=&quot;aw-panel-head&quot;&gt;&lt;div&gt;&lt;span class=&quot;aw-badge aw-badge-good&quot;&gt;Plan ready&lt;/span&gt;&lt;h2 style=&quot;margin-top:10px&quot;&gt;Weekly Reporting Agent&lt;/h2&gt;&lt;p class=&quot;aw-small aw-muted&quot; style=&quot;margin-top:4px&quot;&gt;Approved runbook · Estimated cost $0.80 · No external sends&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;aw-check-list&quot;&gt;&lt;div class=&quot;aw-check-row&quot;&gt;&lt;span&gt;&lt;strong&gt;Read:&lt;/strong&gt; Assigned CRM pipeline and activity records&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-check-row&quot;&gt;&lt;span&gt;&lt;strong&gt;Produce:&lt;/strong&gt; A concise brief with risks, stalled deals, and next actions&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;aw-check-row&quot;&gt;&lt;span&gt;&lt;strong&gt;Deliver:&lt;/strong&gt; My work by the selected deadline&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;aw-button aw-button-primary&quot; type=&quot;button&quot; id=&quot;aw-start-request&quot; style=&quot;margin-top:14px;width:100%&quot;&gt;Start request&lt;/button&gt;';
+        root.querySelector('#aw-start-request').addEventListener('click', () =&gt; { showScreen('employee-home'); flash('Request started. Progress is now visible in My work.'); });
+      });
+
+      updateWizard();
+      showScreen('overview');
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+
+&lt;style id=&quot;codex-visualization-document-scrollbar&quot;&gt;html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}&lt;/style&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  let viewportHeight = globalThis.innerHeight;
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height === "number" &&
+        Number.isFinite(height) &&
+        height >= 0 &&
+        height <= 10_000
+      ) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!Number.isFinite(height) || height <= viewportHeight) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  frame.srcdoc = srcdoc;
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
